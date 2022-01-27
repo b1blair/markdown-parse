@@ -1,5 +1,6 @@
 # Will Break MarkdownParse.java
 
-[link[](google.com)
-[link]]]]]]]]]]](google.com)
-[link]((((((((((((google.com)
+[a link![]](https://vscode.dev/)
+[another link!]hello(www.google.com)
+![image](image.png)
+()
