@@ -74,7 +74,7 @@ public class MarkdownParseTest {
     @Test
     public void testWillFail() throws IOException {
         String contents = Files.readString(Path.of("./test-file-break.md"));
-        List<String> expect = List.of("\n");
+        List<String> expect = List.of();
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
 }
