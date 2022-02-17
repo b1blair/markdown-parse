@@ -26,13 +26,16 @@ public class MarkdownParse {
             if (nextOpenBracket > 0 &&
                 markdown.charAt(nextOpenBracket - 1) == '!' ||
                 markdown.charAt(openParen - 1) != ']' ||
+                openParen-1 != nextCloseBracket ||
                 markdown.charAt(closeParen - 1) == '\n'
             ) {
                 currentIndex = closeParen + 1;
                 continue;
             }
 
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            String toAdd = markdown.substring(openParen + 1, closeParen).trim();
+            
+            toReturn.add(toAdd);
             currentIndex = closeParen + 1;
             // System.out.println(currentIndex);
         }
