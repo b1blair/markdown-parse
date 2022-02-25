@@ -9,7 +9,7 @@ import java.util.List;
 public class MarkdownParseTest {
     // javac -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar MarkdownParseTest.java
     // java -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar org.junit.runner.JUnitCore MarkdownParseTest
-
+/*
     @Test
     public void addition() {
         assertEquals(2, 1 + 1);
@@ -75,6 +75,27 @@ public class MarkdownParseTest {
     public void testWillFail() throws IOException {
         String contents = Files.readString(Path.of("./test-file-break.md"));
         List<String> expect = List.of();
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+    */
+    @Test
+    public void testSnippet1() throws IOException {
+        String contents = Files.readString(Path.of("snippet1.md"));
+        List<String> expect = List.of("`google.com", "google.com", "ucsd.edu");
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+
+    @Test
+    public void testSnippet2() throws IOException {
+        String contents = Files.readString(Path.of("snippet2.md"));
+        List<String> expect = List.of("a.com", "a.com(())", "example.com");
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
+
+    @Test
+    public void testSnippet3() throws IOException {
+        String contents = Files.readString(Path.of("snippet3.md"));
+        List<String> expect = List.of("https://ucsd-cse15l-w22.github.io/");
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
 }
